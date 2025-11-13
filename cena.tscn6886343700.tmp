@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dubvklrjhgr86"]
+
+[ext_resource type="Script" uid="uid://dxy0ixduarttw" path="res://cena.gd" id="1_c3sxu"]
+[ext_resource type="PackedScene" uid="uid://bqclb2k1o21d2" path="res://player.tscn" id="2_fwo5d"]
+[ext_resource type="PackedScene" uid="uid://klpkerucfacb" path="res://comida.tscn" id="3_mxkdn"]
+
+[node name="cena" type="Node2D"]
+script = ExtResource("1_c3sxu")
+
+[node name="raposa" parent="." instance=ExtResource("2_fwo5d")]
+position = Vector2(28, 29)
+scale = Vector2(3, 3)
+gravity_space_override = 1
+gravity = 0.0
+
+[node name="comida2d" parent="." instance=ExtResource("3_mxkdn")]
+position = Vector2(75, 33.615)
+disable_mode = 2
+
+[connection signal="area_entered" from="comida2d" to="comida2d" method="_on_area_entered"]
+[connection signal="coletado" from="comida2d" to="." method="_on_comida_2d_coletado"]

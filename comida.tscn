@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://klpkerucfacb"]
+
+[ext_resource type="Script" uid="uid://ccex5ewustasu" path="res://area_2d.gd" id="1_2d4q8"]
+[ext_resource type="Texture2D" uid="uid://6n67iudj61ft" path="res://FreeAnimalPack/FreeAnimalPack/AnimalStuffs/DogMeat.png" id="2_v8um7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xixxu"]
+radius = 6.0
+height = 14.0
+
+[node name="comida2d" type="Area2D"]
+script = ExtResource("1_2d4q8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_v8um7")
+hframes = 2
+vframes = 2
+
+[node name="comida_body" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="comida_body"]
+shape = SubResource("CapsuleShape2D_xixxu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_xixxu")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
