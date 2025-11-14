@@ -722,4 +722,17 @@ layer_0/tile_data = PackedInt32Array(0, 65536, 1, 65536, 65536, 2, 131072, 65536
 wait_time = 12.0
 autostart = true
 
+[node name="pontos" type="TextEdit" parent="."]
+offset_right = 113.0
+offset_bottom = 33.0
+theme_override_colors/search_result_color = Color(0.3, 0.3, 0.3, 1)
+theme_override_colors/search_result_border_color = Color(0.3019608, 0.3019608, 0.3019608, 0)
+theme_override_colors/current_line_color = Color(0.2509804, 0.2509804, 0.25882354, 0)
+text = "Pontos: 0"
+editable = false
+virtual_keyboard_enabled = false
+virtual_keyboard_show_on_focus = false
+wrap_mode = 1
+
+[connection signal="enviar_pontos" from="." to="." method="_on_enviar_pontos"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

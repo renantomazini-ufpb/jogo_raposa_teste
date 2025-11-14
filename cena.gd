@@ -5,7 +5,9 @@ var screen_size
 var rng = RandomNumberGenerator.new()
 var pontuacao = 0
 var cont_clico = 0
-var vel_urso = 40
+var vel_urso = 45
+signal enviar_pontos(pontos) #metodo antigo
+var ja_morreu = false
 
 
 # Called when the node enters the scene tree for the first time.
@@ -13,14 +15,15 @@ func _ready() -> void:
 	screen_size = get_viewport_rect().size
 	criar_comida()
 	criar_comida()
-	criar_comida()	
+	criar_comida()
+	criar_comida()
 	criar_urso()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$pontos.text = "Pontos:" + str(pontuacao)
 
 func criar_comida():
 	var comida_colocada = comida.instantiate()
@@ -32,7 +35,17 @@ func criar_comida():
 	comida_colocada.connect("coletado",Callable(self, "_on_comida_2d_coletado"))
 
 func over():
-	print("fim de jogo")
+	if ja_morreu:
+		return
+	ja_morreu = true
+	var raposa = $raposa
+	Global.pontos = pontuacao
+	print("play? Game over")
+	raposa.morrer()
+	await raposa.get_node("AnimatedSprite2D").animation_finished
+	emit_signal("enviar_pontos", pontuacao)
+	get_tree().change_scene_to_file("res://gameover.tscn")
+	
 
 func criar_urso():
 	var x
@@ -63,8 +76,9 @@ func _on_comida_2d_area_entered(area: Area2D) -> void:
 
 
 func _on_urso_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	if area.name == "raposa":
-		print("urso pegou!")
+	pass
+
+
 
 
 func _on_timer_timeout() -> void:
@@ -75,3 +89,7 @@ func _on_timer_timeout() -> void:
 		cont_clico = 0
 		vel_urso += pontuacao * 3
 		
+
+
+func _on_enviar_pontos(pontos: Variant) -> void:
+	pass # Replace with function body.

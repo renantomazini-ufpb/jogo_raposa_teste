@@ -10,14 +10,20 @@ config_version=5
 
 [application]
 
-config/name="Plataforma"
+config/name="A Raposa e o Urso"
+run/main_scene="uid://cn1eiivsvpbkw"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://global.tscn"
 
 [display]
 
 window/size/viewport_width=400
 window/size/viewport_height=360
+window/stretch/mode="viewport"
 
 [input]
 

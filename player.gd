@@ -4,7 +4,12 @@ extends Area2D
 @export var speed = 100
 var screen_size
 signal pontua
+var game_over = false
 
+func morrer():
+	game_over = true
+	$AnimatedSprite2D.stop()
+	$AnimatedSprite2D.play("desmaio")
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,6 +20,8 @@ func _ready() -> void:
 
 
 func _process(delta):
+	if game_over:
+		return  
 	var velocity = Vector2()
 	if Input.is_action_pressed("baixo_"):
 		velocity.y += 1	
@@ -40,6 +47,7 @@ func _process(delta):
 	
 	position.y = clamp(position.y,-20, screen_size.y -40)
 	position.x = clamp(position.x,0, screen_size.x)
+
 	
 
 	
