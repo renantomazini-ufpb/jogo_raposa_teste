@@ -1,5 +1,7 @@
 extends Area2D
 @export var speed = 100
+signal game_over
+
 var velocity = Vector2(speed,0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,4 +22,13 @@ func seta_velocidade(vel: int):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	corre(delta)
+	if self.position.x > 650:
+		queue_free()
+	if self.position.x < -100:
+		queue_free()
 	
+
+
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+		if area.name == "raposa":
+			emit_signal("game_over") # Replace with function body.

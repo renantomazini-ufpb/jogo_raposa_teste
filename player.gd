@@ -38,7 +38,7 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 	position += velocity * delta
 	
-	position.y = clamp(position.y,0, screen_size.y)
+	position.y = clamp(position.y,-20, screen_size.y -40)
 	position.x = clamp(position.x,0, screen_size.x)
 	
 
