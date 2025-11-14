@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://bic3ie6ptimg0"]
+
+[ext_resource type="Texture2D" uid="uid://cwe3yrnncacdk" path="res://FreeAnimalPack/Outline/MiniBear.png" id="1_rfowv"]
+[ext_resource type="Script" uid="uid://bbiaq4iglfpp0" path="res://urso.gd" id="1_ys12s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys12s"]
+atlas = ExtResource("1_rfowv")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn2xr"]
+atlas = ExtResource("1_rfowv")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdhco"]
+atlas = ExtResource("1_rfowv")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qe86"]
+atlas = ExtResource("1_rfowv")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oph8j"]
+atlas = ExtResource("1_rfowv")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh3qs"]
+atlas = ExtResource("1_rfowv")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6h2e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys12s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn2xr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdhco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qe86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oph8j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh3qs")
+}],
+"loop": true,
+"name": &"correndo",
+"speed": 9.0
+}]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3mmly"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejh08"]
+size = Vector2(18, 5.5)
+
+[node name="urso" type="Area2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_ys12s")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d6h2e")
+animation = &"correndo"
+frame = 2
+frame_progress = 0.61233664
+flip_h = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="AnimatedSprite2D"]
+physics_material_override = SubResource("PhysicsMaterial_3mmly")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AnimatedSprite2D/StaticBody2D"]
+position = Vector2(1, 10.75)
+shape = SubResource("RectangleShape2D_ejh08")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 11)
+shape = SubResource("RectangleShape2D_ejh08")

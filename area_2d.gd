@@ -25,4 +25,3 @@ func _on_area_entered(area: Area2D) -> void:
 		print("aqui")
 		emit_signal("coletado")
 		queue_free()
-	print("entrou")

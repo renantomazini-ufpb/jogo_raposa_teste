@@ -713,7 +713,6 @@ gravity_space_override = 1
 gravity = 0.0
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 z_index = -1
 tile_set = SubResource("TileSet_wjoo6")
 format = 2
