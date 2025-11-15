@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvxdcab6sc3g4"
-path="res://.godot/imported/TileSet.png-230f55f0cfebd3df9a94ef601e6db821.ctex"
+path="res://.godot/imported/TileSet.png-86a0aacb02d6476eeaf6d3cf3927db8d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://FreeAnimalPack/TileSet.png"
-dest_files=["res://.godot/imported/TileSet.png-230f55f0cfebd3df9a94ef601e6db821.ctex"]
+source_file="res://Terrain/TileSet.png"
+dest_files=["res://.godot/imported/TileSet.png-86a0aacb02d6476eeaf6d3cf3927db8d.ctex"]
 
 [params]
 

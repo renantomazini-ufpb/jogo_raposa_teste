@@ -37,6 +37,10 @@ func _process(delta):
 		$AnimatedSprite2D.flip_h = false
 		velocity.x += 1	
 		$AnimatedSprite2D.animation = "andar"
+	if Input.is_action_pressed("grito"):
+		$AnimatedSprite2D.animation = "grito"
+		$AnimatedSprite2D.play()
+		await $AnimatedSprite2D.animation_finished
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite2D.play()
