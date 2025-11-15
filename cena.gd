@@ -17,6 +17,7 @@ func _ready() -> void:
 	criar_comida()
 	criar_comida()
 	criar_comida()
+	criar_comida()
 	criar_urso()
 	pass # Replace with function body.
 
@@ -24,6 +25,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$pontos.text = "Pontos:" + str(pontuacao)
+	# criar_urso() #só para testes, imagina só
 
 func criar_comida():
 	var comida_colocada = comida.instantiate()
@@ -52,7 +54,7 @@ func criar_urso():
 	var urso = urso_ator.instantiate()
 	urso.connect("game_over", over)
 	var lado = rng.randi_range(0, 1)
-	var y = rng.randf_range(100, 300)
+	var y = rng.randf_range(2, 300)
 	if lado == 1:
 		x = 600
 		urso.seta_velocidade(vel_urso * -1)
@@ -64,7 +66,7 @@ func criar_urso():
 	
 	
 func _on_comida_2d_coletado() -> void:
-	print("pontuou!")
+	#print("pontuou!")
 	pontuacao += 1 
 	print(pontuacao)
 	criar_comida()
@@ -85,7 +87,7 @@ func _on_timer_timeout() -> void:
 	cont_clico += 1 
 	for n in cont_clico:
 		criar_urso()
-	if cont_clico == 5:
+	if cont_clico == 6:
 		cont_clico = 0
 		vel_urso += pontuacao * 3
 		
